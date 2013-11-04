@@ -21,7 +21,7 @@ class CloudCombiner:
         self.sources = sources if sources else [ "blog", "forum", "traditional media", "twitter" ]
 
         #The list of keywords to use
-        self.keywords = self._generate_keywords() if all else keywords
+        self.keywords = self._generate_keywords() if all or not keywords else keywords
 
         #Keep track of successes and failures
         self.success = []
@@ -138,8 +138,12 @@ def main():
                         nargs="+")
 
     args = parser.parse_args()
-    combiner = CloudCombiner(all=args.all, keywords=args.keywords, sources=args.sources)
-    combiner.combine()
+    
+    if not args.all and not args.keywords and not args.sources:
+        parser.print_help()
+    else:
+        combiner = CloudCombiner(all=args.all, keywords=args.keywords, sources=args.sources)
+        combiner.combine()
 
 if __name__ == "__main__":
     main()

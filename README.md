@@ -30,4 +30,27 @@ On Windows, typing `python` in the command line will only work if you have set y
     
 Simpy calling this script, though, won't produce any output. To produce some output you should pass some flags to the file.
 
-#### Available Flags
+### Available Flags
+
+The script accepts 3 different flags
+
+* __-a, --all__
+    * This flag overrides all other flags. It tells the script to use process all of the files in the directory. The default sources are "blog", "traditional media", "twitter", and "forum". It uses these sources to parse each filename and determine all of the unique keywords.
+    * Example:
+
+        `python combine-clouds.py --all`
+
+* __-k, --keywords__
+    * This flag tells the script which keyword to process. It can take *n* keywords, each in quotes, and separated by a space
+    * Example:
+
+        `python combine-clouds.py --keywords "abortion" "crime" "gun control"`
+
+* __-s, --sources__
+    * This flag sets different sources look use when looking through the files. The default sources are "blog", "traditional media", "twitter", and "forum".
+    * Example:
+
+        `python combine-clouds.py --sources "news" "televsion" "facebook"`
+
+adsfa
+fasdfad
