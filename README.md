@@ -10,6 +10,19 @@ The script was writtng using Python 2.7 and requires the following modules (gene
 * re
 * argparse
 
+#### Filename Structure
+
+The script expects all the CSV files that are to be combined to have the following filename structure:
+
+`[keword] [source].csv`
+
+##### Examples
+* abortion blog.csv
+* gun control twitter.csv
+* potus traditional media.csv
+
+Any filename that does not follow this structure will be ignored.
+
 ## Installation
 
 Download the `combine-clouds.py` file and place it in the same directory as the CSV files you wish to process.
@@ -28,11 +41,11 @@ On Windows, typing `python` in the command line will only work if you have set y
 
     c:\Python27\python combine-clouds.py
     
-Simpy calling this script, though, won't produce any output. To produce some output you should pass some flags to the file.
+Simply calling this script, though, will only produce a help message. To combine some files you need to pass some flags to the file.
 
 ### Available Flags
 
-The script accepts 3 different flags
+The script accepts 3 flags
 
 * __-a, --all__
     * This flag overrides all other flags. It tells the script to use process all of the files in the directory. The default sources are "blog", "traditional media", "twitter", and "forum". It uses these sources to parse each filename and determine all of the unique keywords.
@@ -47,10 +60,21 @@ The script accepts 3 different flags
         `python combine-clouds.py --keywords "abortion" "crime" "gun control"`
 
 * __-s, --sources__
-    * This flag sets different sources look use when looking through the files. The default sources are "blog", "traditional media", "twitter", and "forum".
+    * This flag sets different sources use when looking through the files. The default sources are "blog", "traditional media", "twitter", and "forum".
     * Example:
 
         `python combine-clouds.py --sources "news" "televsion" "facebook"`
 
-adsfa
-fasdfad
+#### Other usage examples
+
+This command processes all the files for the keyword "gun control" using the default sources ("blog", "traditional media", "twitter", and "forum"):
+
+    python combine-clouds.py -k "gun control"
+
+This command process all of the files in the current directory:
+
+    python combine-clouds.py -a
+
+This command processes all the files for the keywords "gun control" and "election" using the sources "blog", "twitter", and "reddit":
+
+    python combine-clouds.py -k "gun control" "election" -s "blog" "twitter" "reddit
